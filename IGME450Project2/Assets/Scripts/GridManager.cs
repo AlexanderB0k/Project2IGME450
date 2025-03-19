@@ -12,7 +12,7 @@ public class GridManager : MonoBehaviour
 
     void GenerateGrid()
     {
-        float xOffset = -_width / 2f - 0.5f;
+        float xOffset = -_width / 2f + 0.5f;
         float yOffset = -_height / 2f + 0.5f;
 
         for (int i = 0; i < _width; i++)
