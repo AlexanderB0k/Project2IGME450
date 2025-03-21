@@ -5,35 +5,28 @@ public class Pickup : MonoBehaviour
     private int currentGridX;
     private int currentGridY;
 
-    // Grid boundaries
-    private float minX, maxX, minY, maxY;
     private float xOffset;
     private float yOffset;
 
+    private GridManager gridManager;
+
     void Start()
     {
-        // Find the GridManager and set boundaries
-        GridManager gridManager = FindFirstObjectByType<GridManager>();
-        if (gridManager != null)
-        {
-            // Offset values for correct tile alignment
-            xOffset = -gridManager.Width / 2f + 0.5f;
-            yOffset = -gridManager.Height / 2f + 0.5f;
+        gridManager = FindFirstObjectByType<GridManager>();
+        if (gridManager == null) return;
 
-            // Correct Boundary Calculation with Offset
-            minX = xOffset;
-            maxX = xOffset + gridManager.Width - 1;
-            minY = yOffset;
-            maxY = yOffset + gridManager.Height - 1;
+        // Offset values for correct tile alignment
+        xOffset = -gridManager.Width / 2f + 0.5f;
+        yOffset = -gridManager.Height / 2f + 0.5f;
 
-            // Initial Random Position
-            Respawn();
-        }
+        // Initial Random Position
+        Respawn();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    // TriggerEnter
+    private void OnTriggerEnter2D(Collider2D player)
     {
-        if (other.gameObject.name == "Player") 
+        if (player.gameObject.name == "Player")
         {
             Debug.Log("Coin collected!");
             Respawn();
@@ -42,31 +35,30 @@ public class Pickup : MonoBehaviour
 
     void Respawn()
     {
-        GridManager gridManager = FindFirstObjectByType<GridManager>();
         if (gridManager == null) return;
 
         int gridWidth = gridManager.Width;
         int gridHeight = gridManager.Height;
 
-        Vector2Int newGridPosition = new Vector2Int(currentGridX, currentGridY); // Start with current position
+        Vector2Int newGridPosition = new Vector2Int(currentGridX, currentGridY);
 
-        // Keep generating new positions until it finds a different one
-        while (newGridPosition.x == currentGridX && newGridPosition.y == currentGridY)
+        // Generate a unique position that differs from the current one
+        while (newGridPosition == new Vector2Int(currentGridX, currentGridY))
         {
             int randomX = Random.Range(0, gridWidth);
             int randomY = Random.Range(0, gridHeight);
             newGridPosition = new Vector2Int(randomX, randomY);
         }
 
-        // Set the coin's new grid position
+        // Update new grid position
         currentGridX = newGridPosition.x;
         currentGridY = newGridPosition.y;
 
-        // Move the coin to the correct tile position
-        UpdateCoinPosition();
+        // Move the pickup to the new position
+        UpdatePickupPosition();
     }
 
-    void UpdateCoinPosition()
+    void UpdatePickupPosition()
     {
         transform.position = new Vector3(currentGridX + xOffset, currentGridY + yOffset, transform.position.z);
     }

@@ -5,7 +5,6 @@ public class GridManager : MonoBehaviour
     [SerializeField] private int _width;
     [SerializeField] private int _height;
     [SerializeField] private Tile _tileprefab;
-    [SerializeField] private Transform _cam;
 
     public int Width => _width;   // Added for boundary access
     public int Height => _height; // Added for boundary access

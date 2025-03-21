@@ -3,59 +3,46 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    //Get the current grid x and y 
     private int currentGridX;
     private int currentGridY;
 
-    // Grid boundaries
-    private float minX, maxX, minY, maxY;
+    //Add the offset for the x and y value
     private float xOffset;
     private float yOffset;
 
+    private GridManager gridManager;
+
+
     void Start()
     {
-        // Find the GridManager and set boundaries
-        GridManager gridManager = FindFirstObjectByType<GridManager>();
-        if (gridManager != null)
-        {
-            // Offset values for correct tile alignment
-            xOffset = -gridManager.Width / 2f + 0.5f;
-            yOffset = -gridManager.Height / 2f + 0.5f;
+        //Get the gridManager
+        gridManager = FindFirstObjectByType<GridManager>();
+        if (gridManager == null) return;
 
-            // Correct Boundary Calculation with Offset
-            minX = xOffset;
-            maxX = xOffset + gridManager.Width - 1;
-            minY = yOffset;
-            maxY = yOffset + gridManager.Height - 1;
+        // Offset to align grid tiles correctly
+        xOffset = -gridManager.Width / 2f + 0.5f;
+        yOffset = -gridManager.Height / 2f + 0.5f;
 
-            // Correct Center Calculation
-            currentGridX = Mathf.FloorToInt(gridManager.Width / 2f);
-            currentGridY = Mathf.FloorToInt(gridManager.Height / 2f);
-        }
+        // Start in the center of the grid
+        currentGridX = Mathf.FloorToInt(gridManager.Width / 2f);
+        currentGridY = Mathf.FloorToInt(gridManager.Height / 2f);
 
-        // Position the player at the correct center tile
         UpdatePlayerPosition();
+
     }
 
     public void Move(InputAction.CallbackContext context)
     {
-        if (context.performed)
-        {
-            Vector2 input = context.ReadValue<Vector2>();
+        if (!context.performed) return;
 
-            // Update grid coordinates for movement
-            int newGridX = currentGridX + (int)input.x;
-            int newGridY = currentGridY + (int)input.y;
+        Vector2 input = context.ReadValue<Vector2>();
 
-            // Clamp new position within grid boundaries
-            if (newGridX + xOffset >= minX && newGridX + xOffset <= maxX)
-                currentGridX = newGridX;
+        //boundary check with Mathf.Clamp
+        currentGridX = Mathf.Clamp(currentGridX + (int)input.x, 0, gridManager.Width - 1);
+        currentGridY = Mathf.Clamp(currentGridY + (int)input.y, 0, gridManager.Height - 1);
 
-            if (newGridY + yOffset >= minY && newGridY + yOffset <= maxY)
-                currentGridY = newGridY;
-
-            // Move the player to the new tile position
-            UpdatePlayerPosition();
-        }
+        UpdatePlayerPosition(); 
     }
 
     void UpdatePlayerPosition()
