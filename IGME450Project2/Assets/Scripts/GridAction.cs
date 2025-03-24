@@ -85,6 +85,7 @@ public class GridAction : MonoBehaviour
             //Debug.Log("starting");
             _currentDifficulty = Difficulty.Starting;
         }
+        /*
         else if (globalTimer >= 1.0f && globalTimer < 2.0f)
         {
             //Debug.Log("beginner");
@@ -105,6 +106,7 @@ public class GridAction : MonoBehaviour
             //Debug.Log("expert");
             _currentDifficulty = Difficulty.Expert;
         }
+        */
     }
 
     /// <summary>
