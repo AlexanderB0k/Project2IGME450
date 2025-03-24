@@ -3,44 +3,50 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    private float moveSpeed = 5f;
-    private Rigidbody2D rb;
-    private Vector2 moveInput;
+    //Get the current grid x and y 
+    private int currentGridX;
+    private int currentGridY;
 
-    // Grid boundaries
-    private float minX, maxX, minY, maxY;
+    //Add the offset for the x and y value
+    private float xOffset;
+    private float yOffset;
+
+    private GridManager gridManager;
+
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        //Get the gridManager
+        gridManager = FindFirstObjectByType<GridManager>();
+        if (gridManager == null) return;
 
-        // Find the GridManager and set boundaries
-        GridManager gridManager = FindFirstObjectByType<GridManager>();
-        if (gridManager != null)
-        {
-            minX = -gridManager.Width / 2f -0.6f;
-            maxX = gridManager.Width / 2f - 0.6f;
-            minY = -gridManager.Height / 2f ;
-            maxY = gridManager.Height / 2f;
-        }
+        // Offset to align grid tiles correctly
+        xOffset = -gridManager.Width / 2f + 0.5f;
+        yOffset = -gridManager.Height / 2f + 0.5f;
 
-        // Position the player at the center of the grid
-        transform.position = new Vector3(0, 0, -1);
-    }
+        // Start in the center of the grid
+        currentGridX = Mathf.FloorToInt(gridManager.Width / 2f);
+        currentGridY = Mathf.FloorToInt(gridManager.Height / 2f);
 
-    void Update()
-    {
-        rb.linearVelocity = moveInput * moveSpeed;
+        UpdatePlayerPosition();
 
-        // Clamp player position within grid boundaries
-        float clampedX = Mathf.Clamp(transform.position.x, minX, maxX - 1);
-        float clampedY = Mathf.Clamp(transform.position.y, minY, maxY - 1);
-
-        transform.position = new Vector3(clampedX, clampedY, transform.position.z);
     }
 
     public void Move(InputAction.CallbackContext context)
     {
-        moveInput = context.ReadValue<Vector2>();
+        if (!context.performed) return;
+
+        Vector2 input = context.ReadValue<Vector2>();
+
+        //boundary check with Mathf.Clamp
+        currentGridX = Mathf.Clamp(currentGridX + (int)input.x, 0, gridManager.Width - 1);
+        currentGridY = Mathf.Clamp(currentGridY + (int)input.y, 0, gridManager.Height - 1);
+
+        UpdatePlayerPosition();
+    }
+
+    void UpdatePlayerPosition()
+    {
+        transform.position = new Vector3(currentGridX + xOffset, currentGridY + yOffset, transform.position.z);
     }
 }
