@@ -7,7 +7,6 @@ public class GridManager : MonoBehaviour
 
     [SerializeField] private int _width;
     [SerializeField] private int _height;
-
     [SerializeField] private GameObject _tileprefab;
 
     private List<List<GameObject>> _tileList = new List<List< GameObject>>();
@@ -57,5 +56,4 @@ public class GridManager : MonoBehaviour
             _tileList.Add(tempList);
         }
     }
-    
 }
