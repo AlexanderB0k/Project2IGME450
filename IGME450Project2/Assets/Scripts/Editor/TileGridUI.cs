@@ -21,6 +21,11 @@ public class TileGridUI : Editor
 
         patterns.connectedPatterns = (AttackPatterns)EditorGUILayout.ObjectField("Tile Type", patterns.connectedPatterns, typeof(AttackPatterns), false);
 
+        if (GUILayout.Button("Do Something"))
+        {
+            Debug.Log("Button in Inspector clicked!");
+        }
+
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Tile Grid", EditorStyles.boldLabel);
 

@@ -8,7 +8,7 @@ public class PickUp : MonoBehaviour
     private float xOffset;
     private float yOffset;
 
-    private GridManager gridManager;
+    [SerializeField] private GridManager gridManager;
 
     void Start()
     {
@@ -26,6 +26,8 @@ public class PickUp : MonoBehaviour
     // TriggerEnter
     private void OnTriggerEnter2D(Collider2D player)
     {
+        Debug.Log(player.name);
+
         if (player.gameObject.name == "Player")
         {
             Debug.Log("Coin collected!");

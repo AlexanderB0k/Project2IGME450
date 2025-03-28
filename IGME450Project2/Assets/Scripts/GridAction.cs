@@ -67,6 +67,7 @@ public class GridAction : MonoBehaviour
                 if (currentPattern.tileGrid[x].row[y].isDangerous)
                 {
                     GridManager.Instance.TileList[y][x].GetComponent<SpriteRenderer>().color = Color.red;
+                    GridManager.Instance.TileList[y][x].GetComponent<SpriteRenderer>().tag = "Damage";
                 }
 
             }
@@ -80,12 +81,12 @@ public class GridAction : MonoBehaviour
     /// </summary>
     private void DetermineDiffuclty()
     {
+        //When under a certain time the difficulty will be starting
         if (globalTimer < 1.0f)
         {
             //Debug.Log("starting");
             _currentDifficulty = Difficulty.Starting;
         }
-        /*
         else if (globalTimer >= 1.0f && globalTimer < 2.0f)
         {
             //Debug.Log("beginner");
@@ -106,7 +107,7 @@ public class GridAction : MonoBehaviour
             //Debug.Log("expert");
             _currentDifficulty = Difficulty.Expert;
         }
-        */
+        
     }
 
     /// <summary>
@@ -116,13 +117,23 @@ public class GridAction : MonoBehaviour
     {
         selectedPatternList = PatternsRegistry[_currentDifficulty];
 
-        Debug.Log(selectedPatternList.Count);
+        //Debug.Log(selectedPatternList.Count);
 
-        currentPattern = selectedPatternList[Random.Range(0, selectedPatternList.Count - 1)];
+        //if the attack pattern has a connected pattern instead of getting a random pattern it gets the next connected pattern
+        if (currentPattern.connectedPatterns != null)
+        {
+            currentPattern = currentPattern.connectedPatterns;
+        }
+        //if the current pattern doesn't have another conncted pattern it gets a new random pattern
+        else
+        {
+            currentPattern = selectedPatternList[Random.Range(0, selectedPatternList.Count - 1)];
+        }
+        
     }
 
     /// <summary>
-    /// This 
+    /// At the start of the 
     /// </summary>
     private void DefineDictionary()
     {
