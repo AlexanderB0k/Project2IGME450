@@ -9,10 +9,12 @@ public class Pickup : MonoBehaviour
     private float yOffset;
 
     private GridManager gridManager;
+    private TimerController timerController; 
 
     void Start()
     {
         gridManager = FindFirstObjectByType<GridManager>();
+        timerController = FindFirstObjectByType<TimerController>(); 
         if (gridManager == null) return;
 
         // Offset values for correct tile alignment
@@ -30,6 +32,12 @@ public class Pickup : MonoBehaviour
         {
             Debug.Log("Coin collected!");
             Respawn();
+
+            // Reset timer to 15 seconds
+            if (timerController != null)
+            {
+                timerController.ResetTimer(15f);
+            }
         }
     }
 

@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
+        //So it doesn't update every frame when pressed
         if (!context.performed) return;
 
         Vector2 input = context.ReadValue<Vector2>();
@@ -45,6 +46,7 @@ public class Player : MonoBehaviour
         UpdatePlayerPosition(); 
     }
 
+    //Update the player position 
     void UpdatePlayerPosition()
     {
         transform.position = new Vector3(currentGridX + xOffset, currentGridY + yOffset, transform.position.z);
