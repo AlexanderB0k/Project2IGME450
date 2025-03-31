@@ -7,8 +7,13 @@ public class TimerController : MonoBehaviour
     //Add the floats of the numbers
     [SerializeField] private float timerCounter = 15f;
     [SerializeField] private int minutes;
-    [SerializeField] private int seconds;
+    [SerializeField] public int seconds;
     [SerializeField] private TextMeshProUGUI text;
+
+    public float second
+    {
+        get { return seconds; }
+    }
 
     void Update()
     {
@@ -28,4 +33,5 @@ public class TimerController : MonoBehaviour
     {
         timerCounter = seconds;
     }
+
 }
