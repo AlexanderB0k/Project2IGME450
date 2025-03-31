@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
+        //So it doesn't update every frame when pressed
         if (!context.performed) return;
 
         Vector2 input = context.ReadValue<Vector2>();
@@ -41,10 +42,13 @@ public class Player : MonoBehaviour
         //boundary check with Mathf.Clamp
         currentGridX = Mathf.Clamp(currentGridX + (int)input.x, 0, gridManager.Width - 1);
         currentGridY = Mathf.Clamp(currentGridY + (int)input.y, 0, gridManager.Height - 1);
-
+        
         UpdatePlayerPosition();
     }
 
+
+
+    //Update the player position 
     void UpdatePlayerPosition()
     {
         transform.position = new Vector3(currentGridX + xOffset, currentGridY + yOffset, transform.position.z);

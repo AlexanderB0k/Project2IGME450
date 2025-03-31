@@ -4,25 +4,34 @@ using System.Runtime.CompilerServices;
 
 public class TimerController : MonoBehaviour
 {
-    [SerializeField] private float timerCounter;
+    //Add the floats of the numbers
+    [SerializeField] private float timerCounter = 15f;
     [SerializeField] private int minutes;
-    [SerializeField] private int seconds;
+    [SerializeField] public int seconds;
     [SerializeField] private TextMeshProUGUI text;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public float second
     {
-        
+        get { return seconds; }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        /*
-        timerCounter = Time.deltaTime;  
-        minutes = Mathf.FloorToInt(timerCounter/60f);
-        seconds = Mathf.FloorToInt(timerCounter - minutes * 60);
-        text.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-        */
+        if (timerCounter > 0f)
+        {
+            timerCounter -= Time.deltaTime;
+            timerCounter = Mathf.Max(timerCounter, 0f); 
+
+            minutes = Mathf.FloorToInt(timerCounter / 60f);
+            seconds = Mathf.FloorToInt(timerCounter % 60f);
+
+            text.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        }
     }
+
+    public void ResetTimer(float seconds)
+    {
+        timerCounter = seconds;
+    }
+
 }
