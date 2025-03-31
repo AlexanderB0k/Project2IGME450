@@ -119,17 +119,21 @@ public class GridAction : MonoBehaviour
 
         //Debug.Log(selectedPatternList.Count);
 
-        //if the attack pattern has a connected pattern instead of getting a random pattern it gets the next connected pattern
-        if (currentPattern.connectedPatterns != null)
-        {
-            currentPattern = currentPattern.connectedPatterns;
-        }
-        //if the current pattern doesn't have another conncted pattern it gets a new random pattern
-        else
+        //if there is no current pattern it gets a new random pattern
+        if(currentPattern == null)
         {
             currentPattern = selectedPatternList[Random.Range(0, selectedPatternList.Count - 1)];
         }
-        
+        //if the attack pattern has a connected pattern instead of getting a random pattern it gets the next connected pattern
+        else if (currentPattern != null && currentPattern.connectedPatterns == null)
+        {
+            currentPattern = selectedPatternList[Random.Range(0, selectedPatternList.Count - 1)];
+        }
+        else if (currentPattern != null && currentPattern.connectedPatterns != null)
+        {
+            currentPattern = currentPattern.connectedPatterns;
+        }
+
     }
 
     /// <summary>
