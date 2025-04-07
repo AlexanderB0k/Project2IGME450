@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     public int livesRemaining;
     [SerializeField] private Background background;
     private TimerController timer;
+    
 
     //Created the lives so the player class can access it 
     public int lives
@@ -36,7 +37,7 @@ public class UIManager : MonoBehaviour
         if (livesRemaining == 0 || timer.seconds == 0f)
         { 
             //Go to the game over screen 
-
+            
         }
 
         

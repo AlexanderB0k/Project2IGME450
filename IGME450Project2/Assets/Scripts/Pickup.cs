@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class Pickup : MonoBehaviour
@@ -11,17 +12,25 @@ public class Pickup : MonoBehaviour
     private GridManager gridManager;
     private TimerController timerController; 
 
+    private Player player;
+    private Obsctacle obstacle;
+
+    //Temp to keep track of the points
+    private Points points;
+
     void Start()
     {
         gridManager = FindFirstObjectByType<GridManager>();
-        timerController = FindFirstObjectByType<TimerController>(); 
+        timerController = FindFirstObjectByType<TimerController>();
+        player = FindFirstObjectByType<Player>();
+        points = FindFirstObjectByType<Points>();
+        obstacle = FindFirstObjectByType<Obsctacle>(); 
+
         if (gridManager == null) return;
 
-        // Offset values for correct tile alignment
         xOffset = -gridManager.Width / 2f + 0.5f;
         yOffset = -gridManager.Height / 2f + 0.5f;
 
-        // Initial Random Position
         Respawn();
     }
 
@@ -38,6 +47,18 @@ public class Pickup : MonoBehaviour
             {
                 timerController.ResetTimer(15f);
             }
+
+            points.addPoints();
+
+            //Respawns the obstacle as well
+            if (obstacle != null)
+            {
+                Debug.Log("Respawning obstacle...");
+                obstacle.Respawn();
+            }
+
+            
+
         }
     }
 

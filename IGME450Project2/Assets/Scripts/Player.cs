@@ -3,20 +3,17 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    //Get the current grid x and y 
     private int currentGridX;
     private int currentGridY;
 
-    //Add the offset for the x and y value
     private float xOffset;
     private float yOffset;
 
     private GridManager gridManager;
 
-
     void Start()
     {
-        //Get the gridManager
+        // Get the GridManager
         gridManager = FindFirstObjectByType<GridManager>();
         if (gridManager == null) return;
 
@@ -29,26 +26,46 @@ public class Player : MonoBehaviour
         currentGridY = Mathf.FloorToInt(gridManager.Height / 2f);
 
         UpdatePlayerPosition();
-
     }
 
     public void Move(InputAction.CallbackContext context)
     {
-        //So it doesn't update every frame when pressed
+        // Only trigger on performed input
         if (!context.performed) return;
 
         Vector2 input = context.ReadValue<Vector2>();
 
-        //boundary check with Mathf.Clamp
-        currentGridX = Mathf.Clamp(currentGridX + (int)input.x, 0, gridManager.Width - 1);
-        currentGridY = Mathf.Clamp(currentGridY + (int)input.y, 0, gridManager.Height - 1);
+        int targetX = Mathf.Clamp(currentGridX + (int)input.x, 0, gridManager.Width - 1);
+        int targetY = Mathf.Clamp(currentGridY + (int)input.y, 0, gridManager.Height - 1);
 
-        UpdatePlayerPosition(); 
+        // Block movement if there's an obstacle at the target location
+        if (IsBlockedByObstacle(targetX, targetY)) return;
+
+        currentGridX = targetX;
+        currentGridY = targetY;
+
+        UpdatePlayerPosition();
     }
 
-    //Update the player position 
-    void UpdatePlayerPosition()
+    private void UpdatePlayerPosition()
     {
         transform.position = new Vector3(currentGridX + xOffset, currentGridY + yOffset, transform.position.z);
+    }
+
+    private bool IsBlockedByObstacle(int targetX, int targetY)
+    {
+        Obsctacle[] obstacles = Object.FindObjectsByType<Obsctacle>(FindObjectsSortMode.None);
+        foreach (Obsctacle obstacle in obstacles)
+        {
+            Vector2Int obstaclePos = obstacle.GetGridPosition();
+            if (obstaclePos.x == targetX && obstaclePos.y == targetY)
+                return true;
+        }
+        return false;
+    }
+
+    public Vector2Int GetGridPosition()
+    {
+        return new Vector2Int(currentGridX, currentGridY);
     }
 }
