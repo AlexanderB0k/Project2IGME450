@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 88661911}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -281,7 +281,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88661905}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -660,6 +660,7 @@ GameObject:
   m_Component:
   - component: {fileID: 499399689}
   - component: {fileID: 499399688}
+  - component: {fileID: 499399690}
   m_Layer: 0
   m_Name: GridManager
   m_TagString: Untagged
@@ -679,9 +680,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af252671e0ba9bc4ea0c8bd59fba9341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _width: 5
-  _height: 5
-  _tileprefab: {fileID: 1625790168}
+  _width: 9
+  _height: 9
+  _tileprefab: {fileID: 7211156557860791166, guid: 7594686f5cf59f8499a78ed03bd0952b, type: 3}
 --- !u!4 &499399689
 Transform:
   m_ObjectHideFlags: 0
@@ -697,6 +698,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &499399690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499399687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39dad53467486b04b990b093f563876d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fullPatternList:
+  - {fileID: 11400000, guid: bdf97a20081837848a881190e47fd6dc, type: 2}
+  - {fileID: 11400000, guid: 299886328c30c96458c66ab7a36769cc, type: 2}
+  _currentDifficulty: 0
+  _currentPattern: {fileID: 0}
+  globalTimer: 0
+  patternLifeTimeTimer: 0
+  patternLifeTimeDuration: 5
+  isApplied: 0
+  isGettingNewPattern: 1
+  flashDuration: 0.3
+  flashCount: 6
+  isFlashing: 0
+  isDoneFlashing: 0
 --- !u!1 &502832325
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,17 +1430,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1625790168 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1687259079359395542, guid: 7594686f5cf59f8499a78ed03bd0952b, type: 3}
-  m_PrefabInstance: {fileID: 8002677943089785733}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e34f82d82ac61b04380890d9282aa302, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1910988243
 GameObject:
   m_ObjectHideFlags: 0
@@ -1751,6 +1767,10 @@ PrefabInstance:
     - target: {fileID: 7211156557860791166, guid: 7594686f5cf59f8499a78ed03bd0952b, type: 3}
       propertyPath: m_Name
       value: Tile
+      objectReference: {fileID: 0}
+    - target: {fileID: 7211156557860791166, guid: 7594686f5cf59f8499a78ed03bd0952b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

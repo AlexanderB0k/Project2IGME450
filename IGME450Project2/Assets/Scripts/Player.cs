@@ -42,9 +42,11 @@ public class Player : MonoBehaviour
         //boundary check with Mathf.Clamp
         currentGridX = Mathf.Clamp(currentGridX + (int)input.x, 0, gridManager.Width - 1);
         currentGridY = Mathf.Clamp(currentGridY + (int)input.y, 0, gridManager.Height - 1);
-
-        UpdatePlayerPosition(); 
+        
+        UpdatePlayerPosition();
     }
+
+
 
     //Update the player position 
     void UpdatePlayerPosition()
