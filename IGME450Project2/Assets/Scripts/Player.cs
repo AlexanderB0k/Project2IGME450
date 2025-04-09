@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
@@ -11,8 +13,17 @@ public class Player : MonoBehaviour
 
     private GridManager gridManager;
 
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private Sprite[] _lives;
+    public int livesRemaining;
+    private TimerController timer;
+    [SerializeField] private GameObject gameOverScreen;
+
+
     void Start()
     {
+        timer = FindFirstObjectByType<TimerController>();
+
         // Get the GridManager
         gridManager = FindFirstObjectByType<GridManager>();
         if (gridManager == null) return;
@@ -26,6 +37,11 @@ public class Player : MonoBehaviour
         currentGridY = Mathf.FloorToInt(gridManager.Height / 2f);
 
         UpdatePlayerPosition();
+    }
+
+    void Update()
+    {
+        updateLives(3);
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -54,7 +70,9 @@ public class Player : MonoBehaviour
 
     private bool IsBlockedByObstacle(int targetX, int targetY)
     {
+
         Obsctacle[] obstacles = Object.FindObjectsByType<Obsctacle>(FindObjectsSortMode.None);
+        
         foreach (Obsctacle obstacle in obstacles)
         {
             Vector2Int obstaclePos = obstacle.GetGridPosition();
@@ -67,5 +85,25 @@ public class Player : MonoBehaviour
     public Vector2Int GetGridPosition()
     {
         return new Vector2Int(currentGridX, currentGridY);
+    }
+
+    private void ShowGameOverScreen()
+    {
+        SceneManager.LoadScene(1);
+        timer.seconds = 0; // Pauses the game
+    }
+
+    public void updateLives(int currentLives)
+    {
+        livesRemaining = currentLives;
+
+        if (livesRemaining == 0 || timer.seconds <= 0f)
+        {
+            Debug.Log("Hella");
+            ShowGameOverScreen();
+        }
+        //Create the interaction between the attack and the player can update this
+        //Keep this for now 
+
     }
 }

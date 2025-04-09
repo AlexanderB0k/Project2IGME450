@@ -48,6 +48,7 @@ public class Pickup : MonoBehaviour
                 timerController.ResetTimer(15f);
             }
 
+            //Add Points
             points.addPoints();
 
             //Respawns the obstacle as well
@@ -90,5 +91,11 @@ public class Pickup : MonoBehaviour
     void UpdatePickupPosition()
     {
         transform.position = new Vector3(currentGridX + xOffset, currentGridY + yOffset, transform.position.z);
+    }
+
+    //Get the Position of the pickup
+    public Vector2Int GetGridPosition()
+    {
+        return new Vector2Int(currentGridX, currentGridY);
     }
 }

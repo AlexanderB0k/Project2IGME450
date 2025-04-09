@@ -11,11 +11,13 @@ public class Obsctacle : MonoBehaviour
 
     private GridManager gridManager;
     private Player player;
+    private Pickup pickup;
 
     void Start()
     {
         gridManager = FindFirstObjectByType<GridManager>();
         player = FindFirstObjectByType<Player>();
+        pickup = FindFirstObjectByType<Pickup>();
 
         if (gridManager == null || player == null) return;
 
@@ -41,12 +43,13 @@ public class Obsctacle : MonoBehaviour
         if (gridManager == null || player == null) return;
 
         Vector2Int playerPos = player.GetGridPosition();
+        Vector2Int pickupPos = pickup.GetGridPosition();
 
         int randomX = Random.Range(0, gridManager.Width);
         int randomY = Random.Range(0, gridManager.Height);
         Vector2Int newGridPosition = new Vector2Int(randomX, randomY);
 
-        while (newGridPosition == playerPos)
+        while (newGridPosition == playerPos || newGridPosition == pickupPos)
         {
             randomX = Random.Range(0, gridManager.Width);
             randomY = Random.Range(0, gridManager.Height);
