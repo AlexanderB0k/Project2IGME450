@@ -16,19 +16,14 @@ public class GridManager : MonoBehaviour
     public int MapWidth { get { return _width; } }
 
     public int MapHeight { get { return _height; } }
-    [SerializeField] private Tile _tileprefab;
+    //[SerializeField] private Tile _tileprefab;
 
     public int Width => _width;   // Added for boundary access
     public int Height => _height; // Added for boundary access
 
     public void Awake()
     {
-        if (Instance != null)
-        float xOffset = -_width / 2f + 0.5f;
-        float yOffset = -_height / 2f + 0.5f;
-
-        for (int i = 0; i < _width; i++)
-        {
+        if (Instance != null) {
             Destroy(gameObject);
         }
         else
@@ -36,6 +31,16 @@ public class GridManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
+
+        float xOffset = -_width / 2f + 0.5f;
+        float yOffset = -_height / 2f + 0.5f;
+
+        /*
+        for (int i = 0; i < _width; i++)
+        {
+            Destroy(gameObject);
+        }
+        */
     }
 
     void Start()

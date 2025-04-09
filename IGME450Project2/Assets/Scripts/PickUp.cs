@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PickUp : MonoBehaviour
+public class Pickup : MonoBehaviour
 {
     private int currentGridX;
     private int currentGridY;
@@ -8,11 +8,13 @@ public class PickUp : MonoBehaviour
     private float xOffset;
     private float yOffset;
 
-    [SerializeField] private GridManager gridManager;
+    private GridManager gridManager;
+    private TimerController timerController; 
 
     void Start()
     {
         gridManager = FindFirstObjectByType<GridManager>();
+        timerController = FindFirstObjectByType<TimerController>(); 
         if (gridManager == null) return;
 
         // Offset values for correct tile alignment
@@ -26,12 +28,16 @@ public class PickUp : MonoBehaviour
     // TriggerEnter
     private void OnTriggerEnter2D(Collider2D player)
     {
-        Debug.Log(player.name);
-
         if (player.gameObject.name == "Player")
         {
             Debug.Log("Coin collected!");
             Respawn();
+
+            // Reset timer to 15 seconds
+            if (timerController != null)
+            {
+                timerController.ResetTimer(15f);
+            }
         }
     }
 

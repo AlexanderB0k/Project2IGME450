@@ -2,8 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "AttackPatterns", menuName = "Scriptable Objects/AttackPatterns")]
+
 public class AttackPatterns : ScriptableObject 
 {
+    
 
     public Difficulty DifficultyRating;
 
