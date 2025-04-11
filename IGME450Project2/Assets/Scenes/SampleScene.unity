@@ -716,14 +716,17 @@ MonoBehaviour:
   _currentDifficulty: 0
   _currentPattern: {fileID: 0}
   globalTimer: 0
+  newPatterndelay: 0
+  patternCooldown: 0
   patternLifeTimeTimer: 0
   patternLifeTimeDuration: 5
   isApplied: 0
-  isGettingNewPattern: 1
   flashDuration: 0.3
-  flashCount: 6
+  flashCount: 3
   isFlashing: 0
   isDoneFlashing: 0
+  flashColor: {r: 1, g: 0.9680689, b: 0.13679248, a: 1}
+  damageColor: {r: 1, g: 0.036535725, b: 0, a: 1}
 --- !u!1 &502832325
 GameObject:
   m_ObjectHideFlags: 0
