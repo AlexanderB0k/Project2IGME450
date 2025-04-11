@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
@@ -9,15 +10,8 @@ public class UIManager : MonoBehaviour
     public int livesRemaining;
     [SerializeField] private Background background;
     private TimerController timer;
+    [SerializeField] private GameObject gameOverScreen;
 
-    //Created the lives so the player class can access it 
-    public int lives
-    {
-        get
-        {
-            return _lives.Length;
-        }
-    }
     void Start()
     {
         //Initalize the timer for the game
@@ -30,17 +24,19 @@ public class UIManager : MonoBehaviour
         
     }
 
+    private void ShowGameOverScreen()
+    {
+        SceneManager.LoadScene("GameOverScene");
+    }
+
     public void updateLives(int currentLives)
     {
-        //If the livesRemaining is 0 you get sent to the game over Screen 
-        if (livesRemaining == 0 || timer.seconds == 0f)
-        { 
-            //Go to the game over screen 
+        livesRemaining = currentLives;
 
+        if (livesRemaining == 0 || timer.seconds <= 0f)
+        {
+            ShowGameOverScreen();
         }
-
-        
-
         //Create the interaction between the attack and the player can update this
         //Keep this for now 
 

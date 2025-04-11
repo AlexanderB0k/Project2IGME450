@@ -10,17 +10,25 @@ public class Obsctacle : MonoBehaviour
     private float yOffset;
 
     private GridManager gridManager;
-
+    private Player player;
+    private Pickup pickup;
 
     void Start()
     {
         gridManager = FindFirstObjectByType<GridManager>();
+        player = FindFirstObjectByType<Player>();
+        pickup = FindFirstObjectByType<Pickup>();
 
-        // Offset values for correct tile alignment
+        if (gridManager == null || player == null) return;
+
+        // Offset for tile alignment
         xOffset = -gridManager.Width / 2f + 0.5f;
         yOffset = -gridManager.Height / 2f + 0.5f;
 
-        // Initial Random Position
+        // Start in the center of the grid
+        currentGridX = Mathf.FloorToInt(gridManager.Width / 2f);
+        currentGridY = Mathf.FloorToInt(gridManager.Height / 2f);
+
         Respawn();
     }
 
@@ -30,34 +38,37 @@ public class Obsctacle : MonoBehaviour
         
     }
 
-    void Respawn()
+    public void Respawn()
     {
-        if (gridManager == null) return;
+        if (gridManager == null || player == null) return;
 
-        int gridWidth = gridManager.Width;
-        int gridHeight = gridManager.Height;
+        Vector2Int playerPos = player.GetGridPosition();
+        Vector2Int pickupPos = pickup.GetGridPosition();
 
-        Vector2Int newGridPosition = new Vector2Int(currentGridX, currentGridY);
+        int randomX = Random.Range(0, gridManager.Width);
+        int randomY = Random.Range(0, gridManager.Height);
+        Vector2Int newGridPosition = new Vector2Int(randomX, randomY);
 
-        // Generate a unique position that differs from the current one
-        while (newGridPosition == new Vector2Int(currentGridX, currentGridY))
+        while (newGridPosition == playerPos || newGridPosition == pickupPos)
         {
-            int randomX = Random.Range(0, gridWidth);
-            int randomY = Random.Range(0, gridHeight);
+            randomX = Random.Range(0, gridManager.Width);
+            randomY = Random.Range(0, gridManager.Height);
             newGridPosition = new Vector2Int(randomX, randomY);
         }
 
-        // Update new grid position
         currentGridX = newGridPosition.x;
         currentGridY = newGridPosition.y;
 
-        // Move the pickup to the new position
-        UpdatePosition();
-
+        UpdateObstaclePosition();
     }
 
-    void UpdatePosition()
+    void UpdateObstaclePosition()
     {
         transform.position = new Vector3(currentGridX + xOffset, currentGridY + yOffset, transform.position.z);
+    }
+
+    public Vector2Int GetGridPosition()
+    {
+        return new Vector2Int(currentGridX, currentGridY);
     }
 }
