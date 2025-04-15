@@ -71,9 +71,9 @@ public class Player : MonoBehaviour
     private bool IsBlockedByObstacle(int targetX, int targetY)
     {
 
-        Obsctacle[] obstacles = Object.FindObjectsByType<Obsctacle>(FindObjectsSortMode.None);
+        Obstacle[] obstacles = Object.FindObjectsByType<Obstacle>(FindObjectsSortMode.None);
         
-        foreach (Obsctacle obstacle in obstacles)
+        foreach (Obstacle obstacle in obstacles)
         {
             Vector2Int obstaclePos = obstacle.GetGridPosition();
             if (obstaclePos.x == targetX && obstaclePos.y == targetY)

@@ -13,7 +13,7 @@ public class Pickup : MonoBehaviour
     private TimerController timerController; 
 
     private Player player;
-    private Obsctacle obstacle;
+    private Obstacle obstacle;
 
     //Temp to keep track of the points
     private Points points;
@@ -24,7 +24,7 @@ public class Pickup : MonoBehaviour
         timerController = FindFirstObjectByType<TimerController>();
         player = FindFirstObjectByType<Player>();
         points = FindFirstObjectByType<Points>();
-        obstacle = FindFirstObjectByType<Obsctacle>(); 
+        obstacle = FindFirstObjectByType<Obstacle>(); 
 
         if (gridManager == null) return;
 
