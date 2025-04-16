@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Dangerous
   - Safe
+  - pickup
   layers:
   - Default
   - TransparentFX

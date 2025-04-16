@@ -5,8 +5,8 @@ using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
-    private int currentGridX;
-    private int currentGridY;
+    [SerializeField] private int currentGridX;
+    [SerializeField] private int currentGridY;
 
     private float xOffset;
     private float yOffset;
@@ -14,8 +14,6 @@ public class Player : MonoBehaviour
     private GridManager gridManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    [SerializeField] private Sprite[] _lives;
-    public int livesRemaining;
     private TimerController timer;
     [SerializeField] private GameObject gameOverScreen;
 
@@ -41,7 +39,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        updateLives(3);
+        CheckIfDangerous();
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -93,17 +91,11 @@ public class Player : MonoBehaviour
         timer.seconds = 0; // Pauses the game
     }
 
-    public void updateLives(int currentLives)
+    private void CheckIfDangerous()
     {
-        livesRemaining = currentLives;
-
-        if (livesRemaining == 0 || timer.seconds <= 0f)
+        if (GridManager.Instance.TileList[currentGridY][currentGridX].gameObject.tag == "Dangerous" || timer.TimerCounter <= 0f)
         {
-            Debug.Log("Hella");
             ShowGameOverScreen();
         }
-        //Create the interaction between the attack and the player can update this
-        //Keep this for now 
-
     }
 }

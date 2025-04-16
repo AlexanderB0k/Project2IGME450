@@ -12,97 +12,98 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea562daf9483ec34699d4522bc35fecd, type: 3}
   m_Name: AttackPatterns3 1
   m_EditorClassIdentifier: 
-  DifficultyRating: 2
+  DifficultyRating: 3
   rows: 9
   cols: 9
   tileGrid:
   - row:
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
   - row:
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
   - row:
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
   - row:
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
   - row:
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
   - row:
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
   - row:
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
   - row:
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
   - row:
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
-    - isActive: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+  connectedPatterns: {fileID: 0}

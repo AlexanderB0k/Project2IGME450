@@ -44,7 +44,7 @@ public class Obstacle : MonoBehaviour
 
     void UpdateObstaclePosition()
     {
-        transform.position = new Vector3(currentGridX + xOffset, currentGridY + yOffset, transform.position.z);
+        transform.position = new Vector3(currentGridX + xOffset, currentGridY + yOffset, transform.position.z - 1);
     }
 
     public Vector2Int GetGridPosition()

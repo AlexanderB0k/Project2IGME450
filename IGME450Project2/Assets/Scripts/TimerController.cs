@@ -10,6 +10,13 @@ public class TimerController : MonoBehaviour
     [SerializeField] public int seconds;
     [SerializeField] private TextMeshProUGUI text;
 
+    public float TimerCounter
+    {
+        get {
+            return timerCounter;
+        }
+    }
+
     public float second
     {
         get { return seconds; }
@@ -32,6 +39,11 @@ public class TimerController : MonoBehaviour
     public void ResetTimer(float seconds)
     {
         timerCounter = seconds;
+    }
+
+    public void AddTime(float seconds)
+    {
+        timerCounter += seconds;
     }
 
 }

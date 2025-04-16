@@ -4,8 +4,8 @@ using UnityEngine;
 public class ObstacleManger : MonoBehaviour
 {
     [SerializeField] private GameObject obstaclePrefab;
-    private GridManager gridManager;
-    private Player player;
+    [SerializeField] private GridManager gridManager;
+    [SerializeField] private Player player;
 
     void Start()
     {
@@ -22,9 +22,4 @@ public class ObstacleManger : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

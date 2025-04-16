@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea562daf9483ec34699d4522bc35fecd, type: 3}
-  m_Name: AttackPatterns3 2
+  m_Name: AttackPatterns2 2
   m_EditorClassIdentifier: 
-  DifficultyRating: 3
+  DifficultyRating: 2
   rows: 9
   cols: 9
   tileGrid:
@@ -21,68 +21,8 @@ MonoBehaviour:
     - isDangerous: 1
     - isDangerous: 1
     - isDangerous: 1
-    - isDangerous: 1
-    - isDangerous: 1
-    - isDangerous: 1
-    - isDangerous: 1
-    - isDangerous: 1
-  - row:
-    - isDangerous: 1
-    - isDangerous: 1
-    - isDangerous: 1
     - isDangerous: 0
-    - isDangerous: 1
     - isDangerous: 0
-    - isDangerous: 1
-    - isDangerous: 1
-    - isDangerous: 1
-  - row:
-    - isDangerous: 1
-    - isDangerous: 1
-    - isDangerous: 0
-    - isDangerous: 1
-    - isDangerous: 1
-    - isDangerous: 1
-    - isDangerous: 0
-    - isDangerous: 1
-    - isDangerous: 1
-  - row:
-    - isDangerous: 1
-    - isDangerous: 0
-    - isDangerous: 1
-    - isDangerous: 0
-    - isDangerous: 1
-    - isDangerous: 0
-    - isDangerous: 1
-    - isDangerous: 0
-    - isDangerous: 1
-  - row:
-    - isDangerous: 1
-    - isDangerous: 1
-    - isDangerous: 1
-    - isDangerous: 1
-    - isDangerous: 0
-    - isDangerous: 1
-    - isDangerous: 1
-    - isDangerous: 1
-    - isDangerous: 1
-  - row:
-    - isDangerous: 1
-    - isDangerous: 0
-    - isDangerous: 1
-    - isDangerous: 0
-    - isDangerous: 1
-    - isDangerous: 0
-    - isDangerous: 1
-    - isDangerous: 0
-    - isDangerous: 1
-  - row:
-    - isDangerous: 1
-    - isDangerous: 1
-    - isDangerous: 0
-    - isDangerous: 1
-    - isDangerous: 1
-    - isDangerous: 1
     - isDangerous: 0
     - isDangerous: 1
     - isDangerous: 1
@@ -91,9 +31,9 @@ MonoBehaviour:
     - isDangerous: 1
     - isDangerous: 1
     - isDangerous: 0
-    - isDangerous: 1
     - isDangerous: 0
-    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 0
     - isDangerous: 1
     - isDangerous: 1
   - row:
@@ -101,7 +41,67 @@ MonoBehaviour:
     - isDangerous: 1
     - isDangerous: 1
     - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 0
+    - isDangerous: 0
+    - isDangerous: 0
+    - isDangerous: 0
+  - row:
     - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 1
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 0
+    - isDangerous: 0
+    - isDangerous: 0
+  - row:
+    - isDangerous: 0
+    - isDangerous: 0
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 1
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 0
+    - isDangerous: 0
+  - row:
+    - isDangerous: 0
+    - isDangerous: 0
+    - isDangerous: 0
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 1
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 1
+  - row:
+    - isDangerous: 0
+    - isDangerous: 0
+    - isDangerous: 0
+    - isDangerous: 0
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 1
+    - isDangerous: 1
+    - isDangerous: 1
+  - row:
+    - isDangerous: 1
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 0
+    - isDangerous: 0
+    - isDangerous: 0
+    - isDangerous: 1
+    - isDangerous: 1
+    - isDangerous: 1
+  - row:
+    - isDangerous: 1
+    - isDangerous: 1
+    - isDangerous: 0
+    - isDangerous: 0
+    - isDangerous: 0
     - isDangerous: 1
     - isDangerous: 1
     - isDangerous: 1

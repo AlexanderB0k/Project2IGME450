@@ -7,8 +7,6 @@
         [SerializeField] private TextMeshProUGUI text;
         public int points;
 
-
-
         void Start()
         {
             points = 0;
@@ -22,6 +20,6 @@
         // Update is called once per frame
         void Update()
         {
-        text.text = string.Format("Points: {0}", points);
+            text.text = string.Format("Points: {0}", points);
         }
     }

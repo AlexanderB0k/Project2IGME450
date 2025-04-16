@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
@@ -25,6 +26,8 @@ public class GridAction : MonoBehaviour
     private Dictionary<Difficulty , List<AttackPatterns>> PatternsRegistry = new Dictionary<Difficulty, List<AttackPatterns>>();
 
     private List<AttackPatterns> selectedPatternList;
+
+    [SerializeField] private TextMeshProUGUI difficultyText;
 
     [Header("Timers")]
 
@@ -220,32 +223,33 @@ public class GridAction : MonoBehaviour
             //Debug.Log("starting");
             _currentDifficulty = Difficulty.Starting;
         }
-        else if (globalTimer >= 1.0f && globalTimer < 2.0f)
+        else if (globalTimer >= 4.0f && globalTimer < 12.0f)
         {
             //Debug.Log("beginner");
             if (PatternsRegistry[Difficulty.Beginner].Count > 0)
                 _currentDifficulty = Difficulty.Beginner;
 
         }
-        else if (globalTimer >= 2.0f && globalTimer < 3.0f)
+        else if (globalTimer >= 12.0f && globalTimer < 20.0f)
         {
             //Debug.Log("novice");
             if (PatternsRegistry[Difficulty.Novice].Count > 0)
                 _currentDifficulty = Difficulty.Novice;
         }
-        else if (globalTimer >= 3.0f && globalTimer < 4.0f)
+        else if (globalTimer >= 20.0f && globalTimer < 26.0f)
         {
             //Debug.Log("advance");
             if (PatternsRegistry[Difficulty.Advance].Count > 0)
                 _currentDifficulty = Difficulty.Advance;
         }
-        else if (globalTimer >= 7.0f)
+        else if (globalTimer >= 26.0f)
         {
             //Debug.Log("expert");
             if (PatternsRegistry[Difficulty.Expert].Count > 0)
                 _currentDifficulty = Difficulty.Expert;
         }
-        
+
+        difficultyText.text = $"{_currentDifficulty}";
     }
 
     private void ChangeTileState(string tileTag, Color tileColor, GameObject tile)

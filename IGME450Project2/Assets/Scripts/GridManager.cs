@@ -8,6 +8,7 @@ public class GridManager : MonoBehaviour
     [SerializeField] private int _width;
     [SerializeField] private int _height;
     [SerializeField] private GameObject _tileprefab;
+    [SerializeField] private Transform _parentObject;
 
     private List<List<GameObject>> _tileList = new List<List< GameObject>>();
 
@@ -59,7 +60,7 @@ public class GridManager : MonoBehaviour
             for (int j = 0; j < _height; j++)
             {
                 Vector3 tilePosition = new Vector3(i + xOffset, j + yOffset, 0);
-                GameObject spawnTile = Instantiate(_tileprefab, tilePosition, Quaternion.identity);
+                GameObject spawnTile = Instantiate(_tileprefab, tilePosition, Quaternion.identity, _parentObject);
                 spawnTile.name = $"Tile {i} {j}";
                 tempList.Add(spawnTile);
             }
