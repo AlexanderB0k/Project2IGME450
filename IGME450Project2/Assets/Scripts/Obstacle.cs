@@ -10,23 +10,27 @@ public class Obstacle : MonoBehaviour
 
     private GridManager gridManager;
     private Player player;
+    private CoinPickup coinPickup;
 
-    public void Setup(GridManager gm, Player p)
+    public void Setup(GridManager gm, Player p, CoinPickup coin)
     {
         gridManager = gm;
         player = p;
+        coinPickup = coin;
+
 
         xOffset = -gridManager.Width / 2f + 0.5f;
         yOffset = -gridManager.Height / 2f + 0.5f;
 
-        Respawn(); // Now safe to call
+        Respawn(); 
     }
 
     public void Respawn()
     {
-        if (gridManager == null || player == null) return;
+        if (gridManager == null || player == null || coinPickup == null) return;
 
         Vector2Int playerPos = player.GetGridPosition();
+        Vector2Int coinPos = coinPickup.GetGridPosition();
         Vector2Int newGridPosition;
 
         do
@@ -34,7 +38,7 @@ public class Obstacle : MonoBehaviour
             int randomX = Random.Range(0, gridManager.Width);
             int randomY = Random.Range(0, gridManager.Height);
             newGridPosition = new Vector2Int(randomX, randomY);
-        } while (newGridPosition == playerPos);
+        } while (newGridPosition == playerPos || newGridPosition == coinPos);
 
         currentGridX = newGridPosition.x;
         currentGridY = newGridPosition.y;
@@ -44,7 +48,7 @@ public class Obstacle : MonoBehaviour
 
     void UpdateObstaclePosition()
     {
-        transform.position = new Vector3(currentGridX + xOffset, currentGridY + yOffset, -1);
+        transform.position = new Vector3(currentGridX + xOffset, currentGridY + yOffset, transform.position.z);
     }
 
     public Vector2Int GetGridPosition()
