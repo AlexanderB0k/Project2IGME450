@@ -87,7 +87,7 @@ public class Player : MonoBehaviour
 
     private void ShowGameOverScreen()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
         timer.seconds = 0; // Pauses the game
     }
 

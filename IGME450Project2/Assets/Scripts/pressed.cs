@@ -10,7 +10,7 @@ public class pressed : MonoBehaviour
     public void StartButton()
     {
         Debug.Log("Start Clicked");
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void QuitButton()
