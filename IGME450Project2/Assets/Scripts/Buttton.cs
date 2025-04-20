@@ -18,10 +18,12 @@ public class Buttton : MonoBehaviour
     public void StartButton()
     {
         SceneManager.LoadScene(0);
+        Debug.Log("Clicked");
     }
 
     public void QuitButton()
     {
         Application.Quit();
+        Debug.Log("Clicked");
     }
-}
+}   
