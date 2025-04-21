@@ -60,6 +60,11 @@ public class GridAction : MonoBehaviour
 
     [SerializeField] Color damageColor;
 
+    public float GlobalTimer
+    {
+        get { return globalTimer; }
+    }
+
     private void Awake()
     {
         DefineDictionary();
