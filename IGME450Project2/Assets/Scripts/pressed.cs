@@ -3,19 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class pressed : MonoBehaviour
 {
-    void Start()
-    {
-    }
 
     public void StartButton()
     {
         Debug.Log("Start Clicked");
-        SceneManager.LoadScene(1);
+        //SceneManager.LoadScene(1);
     }
 
     public void QuitButton()
     {
         Debug.Log("Quit Clicked");
-        Application.Quit();
+        //Application.Quit();
     }
 }
