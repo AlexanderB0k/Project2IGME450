@@ -13,9 +13,13 @@ public class CoinPickup : MonoBehaviour
 
     private Player player;
     private Obstacle obstacle;
+    private ObstacleManger obstacleManager;
 
     //Temp to keep track of the points
     private Points points;
+    
+
+   
 
     void Start()
     {
@@ -81,13 +85,13 @@ public class CoinPickup : MonoBehaviour
             //Add Points
             points.addPoints();
 
-            //Respawns the obstacle as well
-            if (obstacle != null)
+            if (obstacleManager != null)
             {
-                Debug.Log("Respawning obstacle...");
-                obstacle.Respawn();
+                obstacleManager.RespawnAllObstacles();
             }
         }
+
+
     }
 
     void Respawn()
@@ -124,6 +128,11 @@ public class CoinPickup : MonoBehaviour
     public Vector2Int GetGridPosition()
     {
         return new Vector2Int(currentGridX, currentGridY);
+    } 
+    
+    public void SetObstacleManager(ObstacleManger manager)
+    {
+        obstacleManager = manager;
     }
 }
 
