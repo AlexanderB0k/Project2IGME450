@@ -60,6 +60,8 @@ public class GridAction : MonoBehaviour
 
     [SerializeField] Color damageColor;
 
+    private Player player;
+
     public float GlobalTimer
     {
         get { return globalTimer; }
@@ -70,8 +72,15 @@ public class GridAction : MonoBehaviour
         DefineDictionary();
     }
 
+    void Start()
+    {
+        player = FindFirstObjectByType<Player>();
+    }
+
     private void Update()
     {
+        if (player == null || !player.GameStarted) return;
+
         globalTimer += Time.deltaTime;
 
         //Step 0 - determine the current difficulty based on the time

@@ -15,12 +15,15 @@ public class Player : MonoBehaviour
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private TimerController timer;
+    private GridAction action;
     [SerializeField] private GameObject gameOverScreen;
 
+    public bool GameStarted { get; private set; } = false;
 
     void Start()
     {
         timer = FindFirstObjectByType<TimerController>();
+        action = FindFirstObjectByType<GridAction>();
 
         // Get the GridManager
         gridManager = FindFirstObjectByType<GridManager>();
@@ -35,6 +38,7 @@ public class Player : MonoBehaviour
         currentGridY = Mathf.FloorToInt(gridManager.Height / 2f);
 
         UpdatePlayerPosition();
+
     }
 
     void Update()
@@ -59,6 +63,13 @@ public class Player : MonoBehaviour
         currentGridY = targetY;
 
         UpdatePlayerPosition();
+
+        if (!GameStarted)
+        {
+            GameStarted = true;
+            Time.timeScale = 1f;
+            timer.StartTimer();
+        }
     }
 
     private void UpdatePlayerPosition()
