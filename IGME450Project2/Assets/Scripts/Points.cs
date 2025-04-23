@@ -7,6 +7,11 @@
         [SerializeField] private TextMeshProUGUI text;
         public int points;
 
+        public int GetCurrentPoints
+        {
+            get { return points; }
+        }
+
         void Start()
         {
             points = 0;
